@@ -1,4 +1,9 @@
 from random import randint
+import os
+
+#clear screan
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 
 #function to decide witch bet wins
@@ -56,9 +61,10 @@ print("""Hello! Welcome to our game of French Bank.
 
 player_name = input("What is your name?: ")
 
+cls()
 while True:
     try:
-        player_bank = input("How much do you want to put in your bank?: ")
+        player_bank = input(f"Hello {player_name}, How much do you want to put in your bank?: ")
         player_bank = int(player_bank)
         break
     except:
@@ -80,6 +86,7 @@ while player_bank > 0:
     round_sumary(round_sum)
     input_continue = input("Do you want to continue? exit if you want end ")
     if input_continue == "":
+        cls()
         continue
     break
 
