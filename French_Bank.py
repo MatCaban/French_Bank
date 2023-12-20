@@ -20,10 +20,9 @@ def bet_verit(bet, bank):
             if bet < bank:
                 return bet
             else:
-                print("Sorry, not enough money")
+                print(f"Sorry, not enough money in your bank. You've got {bank} €")
         except:
             print("Sorry, only numeric value.")
-
 #function that handle player choice:
 def player_choice_bet():
     print("For low bet type A\nFor high bet type B\nFor Ace type C")
