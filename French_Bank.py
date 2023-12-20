@@ -12,12 +12,23 @@ def round_sumary(round_sum):
         else:
             print("No one wins, new toss.")
 
-dice_1 = randint(1,6)
-dice_2 = randint(1,6)
-dice_3 = randint(1,6)
+def bet_verit(bet, bank):
+    while True:
+        try:
+            bet = input("What is going to be your bet for this round? ")
+            bet = int(bet)
+            if bet < bank:
+                return bet
+            else:
+                print("Sorry, not enough money")
+        except:
+            print("Sorry, only numeric value.")
+
+
+
 player_name = ""
-player_bank = ""
-casino_bank = 10000
+player_bank = 0
+player_bet = 0
 game_on = True
 
 print("""Hello! Welcome to our game of French Bank.
@@ -35,12 +46,26 @@ player_name = input("What is your name?: ")
 while True:
     try:
         player_bank = input("How much do you want to put in your bank?: ")
-        int(player_bank)
+        player_bank = int(player_bank)
         break
     except:
-        print("Sorry wrong input, we accept valu in numbers.")  
+        print("Sorry wrong input, we accept value in numbers.")  
 
-round_sum = dice_1 + dice_2 + dice_3
 
-round_sumary(round_sum)
+while player_bank > 0:
+    dice_1 = randint(1,6)
+    dice_2 = randint(1,6)
+    dice_3 = randint(1,6)
+    
+
+    player_bet = bet_verit(player_bet, player_bank)
+    
+
+    round_sum = dice_1 + dice_2 + dice_3
+    print(f"dice1 {dice_1}...dice2 {dice_2}... dice3{dice_3}")
+    round_sumary(round_sum)
+    input_continue = input("Do you want to continue? exit if you want end ")
+    if input_continue == "":
+        continue
+    break
 
