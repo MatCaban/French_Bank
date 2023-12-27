@@ -52,7 +52,6 @@ player_name = ""
 player_bank = 0
 player_bet = 0
 player_choice = ""
-game_on = True
 
 print("""Hello! Welcome to our game of French Bank.
       Game is fairly easy. We are going to toss 3 dices each round.
