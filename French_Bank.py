@@ -1,4 +1,5 @@
 from random import randint
+from time import sleep
 import os
 
 #clear screan
@@ -9,16 +10,16 @@ def cls():
 #function to decide witch bet wins
 def round_sumary(round_sum):
         if round_sum >= 5 and round_sum <= 7:
-            print("Low Bet Win!")
+            #print("Low Bet Win!")
             return "a"
         elif round_sum >= 14 and round_sum <= 16:
-            print("High Bet Win!")
+            #print("High Bet Win!")
             return "b"
         elif dice_1 == dice_2 == dice_3:
-            print("Ace Bet Win!")
+            #print("Ace Bet Win!")
             return "c"
         else:
-            print("No one wins, new toss.")
+            #print("No one wins, new toss.")
             return "x"
 #function that veritify bank balance
 def bet_verit(bet, bank):
@@ -74,25 +75,43 @@ while True:
     except:
         print("Sorry wrong input, we accept value in numbers.")  
 
+player_choice = player_choice_bet()
+player_bet = bet_verit(player_bet, player_bank)
 
 while player_bank > 0:
-    print(f"Welcome to new round! Your current bank balance is {player_bank}")
+    print(f"Welcome to new round! Your current bank balance is {player_bank} and you bet {player_bet}.")
     dice_1 = randint(1,6)
     dice_2 = randint(1,6)
-    dice_3 = randint(1,6)
-    
-    player_choice = player_choice_bet()
-    player_bet = bet_verit(player_bet, player_bank)
+    dice_3 = randint(1,6)    
     
 
     round_sum = dice_1 + dice_2 + dice_3
+    print(f"Aaaaan numbers on dices are: {dice_1}, {dice_2}, {dice_3}")
     print(f"The sum of dices for this round is: {round_sum}")
     if round_sumary(round_sum) == "x":
+        print("No one wins, new tos incomming!")
+        sleep(3.0)
+        cls()
         continue
     else:
+        if player_choice != round_sumary(round_sum):
+            print("you loose!")
+            if player_choice == "a" or "b":
+                player_bank -= player_bet
+            else:
+                player_bank -= player_bet * 61
+        else:
+            print("you win!")
+            if player_choice == "a" or "b":
+                player_bank += player_bet
+            else:
+                player_bank += player_bet * 61
+
         input_continue = input("Do you want to continue? exit if you want end ")
         if input_continue == "":
             cls()
+            player_choice = player_choice_bet()
+            player_bet = bet_verit(player_bet, player_bank)
             continue
         break
 
