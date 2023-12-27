@@ -1,0 +1,6 @@
+french bank
+3 kocky 2 druhy stávok
+1 player game
+low -> sum   win 1:1
+high -> sum 14, 15, 16 win 1:1
+aces -> same value win 61:1

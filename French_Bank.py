@@ -10,12 +10,16 @@ def cls():
 def round_sumary(round_sum):
         if round_sum >= 5 and round_sum <= 7:
             print("Low Bet Win!")
+            return "a"
         elif round_sum >= 14 and round_sum <= 16:
             print("High Bet Win!")
+            return "b"
         elif dice_1 == dice_2 == dice_3:
             print("Ace Bet Win!")
+            return "c"
         else:
             print("No one wins, new toss.")
+            return "x"
 #function that veritify bank balance
 def bet_verit(bet, bank):
     while True:
@@ -82,11 +86,13 @@ while player_bank > 0:
     
 
     round_sum = dice_1 + dice_2 + dice_3
-    print(f"dice1 {dice_1}...dice2 {dice_2}... dice3{dice_3}")
-    round_sumary(round_sum)
-    input_continue = input("Do you want to continue? exit if you want end ")
-    if input_continue == "":
-        cls()
+    print(f"The sum of dices for this round is: {round_sum}")
+    if round_sumary(round_sum) == "x":
         continue
-    break
+    else:
+        input_continue = input("Do you want to continue? exit if you want end ")
+        if input_continue == "":
+            cls()
+            continue
+        break
 
