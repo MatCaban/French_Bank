@@ -27,7 +27,7 @@ def bet_verit(bet, bank):
         try:
             bet = input("What is going to be your bet for this round? ")
             bet = int(bet)
-            if bet < bank:
+            if bet <= bank:
                 return bet
             else:
                 print(f"Sorry, not enough money in your bank. You've got {bank} €")
@@ -78,7 +78,7 @@ while True:
 player_choice = player_choice_bet()
 player_bet = bet_verit(player_bet, player_bank)
 
-while player_bank > 0:
+while True:
     print(f"Welcome to new round! Your current bank balance is {player_bank} and you bet {player_bet}.")
     dice_1 = randint(1,6)
     dice_2 = randint(1,6)
@@ -89,8 +89,8 @@ while player_bank > 0:
     print(f"Aaaaan numbers on dices are: {dice_1}, {dice_2}, {dice_3}")
     print(f"The sum of dices for this round is: {round_sum}")
     if round_sumary(round_sum) == "x":
-        print("No one wins, new tos incomming!")
-        sleep(3.0)
+        print("NO ONE WINS! NEW TOSS INCOMING!!!")
+        sleep(4.0)
         cls()
         continue
     else:
@@ -106,8 +106,12 @@ while player_bank > 0:
                 player_bank += player_bet
             else:
                 player_bank += player_bet * 61
+        if player_bank == 0:
+            print("You loose all your money! I am sorry, the game is over")
+            sleep(5.0)
+            break
 
-        input_continue = input("Do you want to continue? exit if you want end ")
+        input_continue = input("Enter for new round/ Character + enter for exit.")
         if input_continue == "":
             cls()
             player_choice = player_choice_bet()
