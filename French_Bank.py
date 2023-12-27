@@ -86,7 +86,7 @@ while True:
     
 
     round_sum = dice_1 + dice_2 + dice_3
-    print(f"Aaaaan numbers on dices are: {dice_1}, {dice_2}, {dice_3}")
+    print(f"Aaaaand numbers on dices are: {dice_1}, {dice_2}, {dice_3}")
     print(f"The sum of dices for this round is: {round_sum}")
     if round_sumary(round_sum) == "x":
         print("NO ONE WINS! NEW TOSS INCOMING!!!")
@@ -99,14 +99,15 @@ while True:
             if player_choice == "a" or "b":
                 player_bank -= player_bet
             else:
-                player_bank -= player_bet * 61
+                player_bank -= (player_bet * 61)
         else:
             print("you win!")
             if player_choice == "a" or "b":
                 player_bank += player_bet
             else:
-                player_bank += player_bet * 61
-        if player_bank == 0:
+                player_bank += (player_bet * 61)
+
+        if player_bank <= 0:
             print("You loose all your money! I am sorry, the game is over")
             sleep(5.0)
             break
